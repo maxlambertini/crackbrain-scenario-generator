@@ -1,0 +1,97 @@
+{{ define "layout"}}
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Crackbrain Scenario Generator</title>
+	<link rel="stylesheet" href="/static/stylesheet/main.css" type="text/css">
+</head>
+<body>
+    <header>
+        <h1>{{ .Titolo }}</h1>
+        <h3>Uno scenario per Crackbrain</h3>
+    </header>
+    <article>
+        <div class="orrore">
+            <h2>L'orrore</h2>
+      
+            <p>
+                L'orrore è: <b>{{ .Orrore.Tipo }}</b>. 
+                I suoi tratti sono: <b>{{ .Orrore.Tratti}}</b> e il suo luogo preferito è <b>{{ .Orrore.Luogo }}</b>.
+            </p>
+            <p>
+
+            <h2>{{ .Orrore.Manifestazione.Nome }}, Manifestazione dell'orrore</h2>                
+
+            L'orrore si manifesta attraverso la seguente creatura mortale: <b>{{ .Orrore.Manifestazione.Nome }}</b>, 
+            che ha come background <b>{{ .Orrore.Manifestazione.Background }}</b>. 
+            Come oggetto feticcio ha <b>{{ .Orrore.Manifestazione.Oggetto }}</b>, 
+            e quando è in forma "normale" ha un'indole <b>{{ .Orrore.Manifestazione.Indole }}</b>, 
+            </p>
+            
+            <h2>Note ulteriori sull'orrore:</h2>
+            
+            <p>Come si manifesta? Quali sono le relazioni con la vittima e i suoi avatar sulla terra? <p>
+                        
+        </div>
+        <div class="vittima">
+            <h2>{{ .Orrore.Vittima.Png.Nome }}, La vittima</h2>
+            <p>
+            Il suo background era <b>{{ .Orrore.Vittima.Png.Background }}</b>. 
+            Come oggetto feticcio aveva <b>{{ .Orrore.Vittima.Png.Oggetto }}</b>, 
+            e chi la conosceva diceva che la sua indole era <b>{{ .Orrore.Vittima.Png.Indole }}</b>, 
+            </p>
+            
+            <p>É stata trovata in <b>{{ .Orrore.Vittima.LuogoRitrovamento }}</b><p>
+
+            <p>Con l'orrore aveva una relazione di <b>{{ .Orrore.Vittima.Relazione  }}</b> <p>
+        </div>
+        <div class="agente">
+            <h2>{{ .Orrore.Agente.Png.Nome }}, Agente al servizio dell'orrore</h2>
+            <p>
+            Il suo background è <b>{{ .Orrore.Agente.Png.Background }}</b>. 
+            L'oggetto che lo contraddistingue è  <b>{{ .Orrore.Agente.Png.Oggetto }}</b>, 
+            E la sua indole è <b>{{ .Orrore.Agente.Png.Indole }}</b>, 
+            </p>
+            
+            <p>Con l'orrore ha una relazione di <b>{{ .Orrore.Agente.Relazione  }}</b><p>
+        </div>
+        <div class="pngs">
+            <h2>Personaggi Non Giocanti</h2>
+            <div class="lista">
+            {{ range .Pngs }}
+                <div class="png">
+                    <h3>{{ .Png.Nome }} -- {{ .Ruolo }}</h3>
+                    <p>
+                        <b>{{.Png.Background}}</b>, possiede un <b>{{.Png.Oggetto}}</b>. 
+                        È di indole: <b>{{.Png.Indole }}</b>. La relazione che ha col personaggio di 
+                        riferimento è di: <b>{{.Relazione}}</b>
+                    </p>
+                </div>
+            {{ end }}
+            </div>
+        </div>
+        <div class="personaggi">
+            <h2>Personaggi pregenerati</h2>
+            <div class="lista">
+            {{ range .Personaggi }}
+                <div class="png">
+                    <h3>{{ .Nome }}</h3>
+                    <p>
+                        <b>{{.Background}}</b>, possiede un <b>{{.Oggetto}}</b>.
+                        Il suo stile è <b>{{.Stile.Nome }}</b>, ovvero:  {{.Stile.Descrizione}}
+                    </p>
+                </div>
+            {{ end }}
+            </div>
+        </div>
+    </article>      
+    <footer>
+        <p>
+            Made with blood, sweat and tears.
+        </p>
+    </footer>
+</body>
+</html>
+{{end}}
