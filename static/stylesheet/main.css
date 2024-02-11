@@ -20,13 +20,14 @@
     a:visited { color: #FFFF80 }
     a:disabled { color: #FFFF00 }
     
-  HEADER, FOOTER,  .agente, .orrore, .personaggi,.vittima, .pngs {
+  HEADER, FOOTER,  .agente, .orrore, .personaggi,.vittima, .pngs, .luoghi {
      padding: 2em max(1em, calc( ( 100% - min(100%,1200px)) /2 ));
     }
     
   .vittima { background-color: #901;}
   .orrore { background-color: #425;}
   .agente { background-color: #531;}
+  .luoghi { background-color: #891; color: black;}
   
   .pngs { 
     background-color: #A73; 
@@ -72,8 +73,8 @@
       BODY, DIV, UL LI, P {
           font-family: "Segoe UI", Roboto, Helvetica, Arial, "Segoe UI Emoji", "Segoe UI Symbol", "Noto sans", "Cantarell",system-ui,sans-serif, "Apple Color Emoji" ;
           font-size: 10pt;
-          background-color: black;
-          color: white;
+          color: black;
+          background-color: white;
         }    
     }
     

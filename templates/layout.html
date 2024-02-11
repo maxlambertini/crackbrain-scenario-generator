@@ -64,13 +64,21 @@
                 <div class="png">
                     <h3>{{ .Png.Nome }} -- {{ .Ruolo }}</h3>
                     <p>
-                        <b>{{.Png.Background}}</b>, possiede un <b>{{.Png.Oggetto}}</b>. 
+                        <b>{{.Png.Background}}</b>, possiede <b>{{.Png.Oggetto}}</b>. 
                         È di indole: <b>{{.Png.Indole }}</b>. La relazione che ha col personaggio di 
                         riferimento è di: <b>{{.Relazione}}</b>
                     </p>
                 </div>
             {{ end }}
             </div>
+        </div>
+        <div class="luoghi">
+            <h2>Luoghi extra</h2>
+            <ul>
+            {{ range .Luoghi}}
+            <li>{{ . }}</li>
+            {{ end}}
+            </ul>
         </div>
         <div class="personaggi">
             <h2>Personaggi pregenerati</h2>
@@ -79,7 +87,7 @@
                 <div class="png">
                     <h3>{{ .Nome }}</h3>
                     <p>
-                        <b>{{.Background}}</b>, possiede un <b>{{.Oggetto}}</b>.
+                        <b>{{.Background}}</b>, possiede <b>{{.Oggetto}}</b>.
                         Il suo stile è <b>{{.Stile.Nome }}</b>, ovvero:  {{.Stile.Descrizione}}
                     </p>
                 </div>
@@ -91,7 +99,9 @@
         <p>
             Questo è un generatore <i>pseudo</i>casuale di scenari per il gioco di ruolo horror/investigativo <a href="https://luca-negri.itch.io/crackbrain">Crackbrain</a>,  che segue l'algoritmo enunciato nel manuale. 
         </p>
-        <p>Se vi piace lo scenario appena generato, questo è il suo permalink: <a href="{{ .Url }}">{{ .Url }}</a></p>
+        <p>Se vi piace lo scenario appena generato, questo è il suo permalink: <a href="{{ .Url }}">{{ .Url }}</a>
+        Se invece volete generare uno scenario ex-novo, <a href="/">cliccate qui. </a>
+        </p>
         <p>Il programma è scritto in <b>go</b>; se ci tenete a modificarlo/usarlo come base/ecc. il codice lo trovate qui: <a href="https://github.com/maxlambertini/crackbrain-scenario-generator">https://github.com/maxlambertini/crackbrain-scenario-generator</a>. </p>
     </footer>
 </body>

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"strings"
 )
 
 type CrackbrainTables struct {
@@ -595,87 +596,130 @@ func (t *CrackbrainTables) GetBakgroundPng() string {
 }
 
 var OggettoPersonale = []string{
-	"colt M1911 “Rei Ayanami edition”",
-	"moneta d’argento portafortuna",
-	"cravatta nera con spilla",
+	"una colt M1911 “Rei Ayanami edition”",
+	"una moneta d’argento portafortuna",
+	"una cravatta nera con spilla",
 	"due dadi truccati",
-	"vecchia torcia a pile",
-	"bicicletta rossa",
-	"cocaina in una scatoletta di latta",
-	"piastrine di riconoscimento",
-	"utilitaria",
-	"vecchia muscle car scassata",
-	"puntatore laser",
-	"chopstick tra i capelli",
-	"pendaglio di giada cinese",
-	"occhiali da sole di marca",
-	"sigarette",
-	"coltellino svizzero da boyscout",
-	"tarocchi",
-	"bibbia",
-	"bibbia con fiaschetta nascosta",
-	"nunchaku",
-	"Canon e teleobbiettivo",
-	"espressione seducente",
-	"7 icone religiose diverse al collo",
-	"cappello di stagnola",
-	"scarpe da corsa fortunate",
-	"antidolorifici",
-	"rolex",
-	"ciocca di capelli",
-	"stilografica",
-	"portachiavi in corda",
-	"strumento musicale",
-	"foto dell’amico perduto",
-	"manette pelose",
-	"accendino personalizzato",
-	"Game Boy color",
-	"erba (qualità buona)"}
+	"una vecchia torcia a pile",
+	"una bicicletta rossa",
+	"della cocaina in una scatoletta di latta",
+	"delle piastrine di riconoscimento",
+	"un'utilitaria",
+	"una vecchia muscle car scassata",
+	"un puntatore laser",
+	"un chopstick tra i capelli",
+	"un pendaglio di giada cinese",
+	"degli occhiali da sole di marca",
+	"delle sigarette",
+	"un coltellino svizzero da boyscout",
+	"dei tarocchi",
+	"una bibbia",
+	"una bibbia con fiaschetta nascosta",
+	"un nunchaku",
+	"una Canon e teleobbiettivo",
+	"unìespressione seducente",
+	"sette icone religiose diverse al collo",
+	"un cappello di stagnola",
+	"delle scarpe da corsa fortunate",
+	"degli antidolorifici",
+	"un rolex",
+	"una ciocca di capelli",
+	"una stilografica",
+	"un portachiavi in corda",
+	"uno strumento musicale",
+	"una foto dell’amico perduto",
+	"delle manette pelose",
+	"un accendino personalizzato",
+	"un Game Boy color",
+	"dell'erba (qualità buona)"}
 
 func (t *CrackbrainTables) GetOggettoPersonale() string {
 	return t.GetRandomItem(OggettoPersonale)
 }
 
 var Luoghi = []string{
-	"libreria universitaria",
-	"grand hotel",
-	"laboratorio",
-	"fast food, in centro",
-	"quel locale dall’altra parte della città",
-	"al parchetto, era così inquietante",
-	"parcheggio dello stadio",
-	"supermercato, tra i surgelati",
-	"locale sinistro, tra brutti ceffi",
-	"karaoke",
-	"cimitero",
-	"nel suo ufficio",
-	"villa con piscina, che vista!",
-	"in piazza, in mezzo alla gente",
-	"in un ingorgo stradale",
-	"su una limousine, con 3 sconosciuti",
-	"piscina coperta",
-	"discoteca popolare",
-	"locale ricercato, hipster e storici",
-	"nel suo appartamento",
-	"in chiesa, di notte",
-	"in periferia, sul cavalcavia",
-	"in tv, sul quinto canale",
+	"una libreria universitaria",
+	"un grand hotel",
+	"un laboratorio",
+	"un fast food, in centro",
+	"un locale dall’altra parte della città",
+	"un parchetto, era così inquietante",
+	"un parcheggio dello stadio",
+	"un supermercato, tra i surgelati",
+	"un locale sinistro, tra brutti ceffi",
+	"un karaoke",
+	"un cimitero",
+	"una chiesa sconsacrata piena di graffiti blasfemi",
+	"una fattoria abbandonata diroccata",
+	"un Centro Sociale Occupato, YYY Vive!",
+	"una serie di case occupate da diseredati",
+	"un albergo per rottami umani",
+	"una balera frequentata da arzilli ballerini",
+	"un ufficio, il suo",
+	"una villa con piscina, che vista!",
+	"una piazza, in mezzo alla gente",
+	"un ingorgo stradale",
+	"una limousine, con 3 sconosciuti",
+	"una piscina coperta",
+	"un'industria del gruppo YYY",
+	"una discoteca popolare",
+	"un locale ricercato, hipster e storici",
+	"un appartamento, il suo",
+	"una chiesa, di notte",
+	"periferia, sul cavalcavia",
+	"tv, sul quinto canale",
 	"sala giochi, cabinato di Metal Slug",
-	"grosso cantiere, sotto il grattacielo",
-	"al cinema",
-	"dentro un tombino, nelle fogne",
-	"alla discarica",
-	"blocco abitativo iper-popolato",
+	"un grosso cantiere, sotto il grattacielo",
+	"un cinema",
+	"un tombino, nelle fogne",
+	"una discarica",
+	"un blocco abitativo iper-popolato",
 	"in metro",
-	"magazzino merci, fuori città",
+	"un magazzino merci, fuori città",
+	"una boutique del gruppo YYY",
+	"un ristorante, da Chez YYY",
 	"ospedale centrale",
-	"clinica infame",
-	"vicolo dietro a (ritira, aggiungi)",
-	"al molo (c’è un molo?)",
-	"squallido motel"}
+	"una clinica infame",
+	"un vicolo dietro a XXX",
+	"un molo (c’è un molo?)",
+	"uno squallido motel"}
 
 func (t *CrackbrainTables) GetLuogo() string {
-	return t.GetRandomItem(Luoghi)
+	s := t.GetRandomItem(Luoghi)
+	s1 := ""
+	s = strings.Replace(s, "YYY", t.Cognome(), 1)
+	if strings.Contains(s, "XXX") {
+		for {
+			s1 = t.GetRandomItem(Luoghi)
+			if s1 != s {
+				break
+			}
+		}
+
+		s = strings.Replace(s, "XXX", s1, 1)
+	}
+	return s
+}
+
+func (t *CrackbrainTables) GetLuoghi(n int) []string {
+	lg := t.NdShuffle(Luoghi, n)
+	for h := 0; h < n; h++ {
+		s := lg[h]
+		s1 := ""
+		s = strings.Replace(s, "YYY", t.Cognome(), 1)
+		if strings.Contains(s, "XXX") {
+			for {
+				s1 = t.GetRandomItem(Luoghi)
+				if s1 != s {
+					break
+				}
+			}
+
+			s = strings.Replace(s, "XXX", s1, 1)
+		}
+		lg[h] = s
+	}
+	return lg
 }
 
 var TipiDiOrrore = []string{

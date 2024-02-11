@@ -132,6 +132,7 @@ type Scenario struct {
 	Orrore     *Orrore          `json:"orrore"`
 	Pngs       []*PngSecondario `json:"pngs"`
 	Personaggi []*Personaggio   `json:"personaggi"`
+	Luoghi     []string         `json:"luoghi"`
 	Seed       int64            `json:"seed"`
 	Url        string
 }
@@ -178,5 +179,6 @@ func CreateScenario(t *CrackbrainTables) *Scenario {
 		Titolo:     t.GetTitolo(),
 		Orrore:     orrore,
 		Pngs:       pngs,
+		Luoghi:     t.GetLuoghi(10),
 	}
 }
