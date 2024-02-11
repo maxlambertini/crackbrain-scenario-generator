@@ -71,6 +71,13 @@ func serveTemplate(w http.ResponseWriter, r *http.Request, _ httprouter.Params) 
 	lp := filepath.Join(ExecutablePath+"/templates", "layout.html")
 	table := NewCrackbrainTables(seed)
 	scenario := CreateScenario(table)
+	host := r.Host
+	scheme := "http"
+	if r.URL.Scheme != "" {
+		scheme = r.URL.Scheme
+	}
+	fmt.Println(r.RequestURI)
+	scenario.Url = fmt.Sprintf("%s://%s/?seed=%d", scheme, host, seed)
 
 	tmpl, err := template.ParseFiles(lp)
 	if err != nil {

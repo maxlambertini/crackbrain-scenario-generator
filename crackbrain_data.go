@@ -6,11 +6,13 @@ import (
 )
 
 type CrackbrainTables struct {
-	rnd rand.Source
+	Seed int64
+	Url  string
+	rnd  rand.Source
 }
 
 func NewCrackbrainTables(i int64) *CrackbrainTables {
-	return &CrackbrainTables{rnd: rand.NewSource(i)}
+	return &CrackbrainTables{Seed: i, rnd: rand.NewSource(i)}
 }
 
 var NomiFemminili = []string{

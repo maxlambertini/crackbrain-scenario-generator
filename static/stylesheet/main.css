@@ -1,70 +1,80 @@
 @media screen {
 
-:root {
-    --max-width: max(100%, 1200px);
-  }
-  
-  BODY {
-      font-family: "Segoe UI", Roboto, Helvetica, Arial, "Segoe UI Emoji", "Segoe UI Symbol", "Noto sans", "Cantarell",system-ui,sans-serif, "Apple Color Emoji" ;
-      font-size: 14pt;
-      background-color: black;
-      color: white;
+  :root {
+      --max-width: max(100%, 1200px);
     }
-  
-HEADER, FOOTER,  .agente, .orrore, .personaggi,.vittima, .pngs {
-   padding: 2em max(1em, calc( ( 100% - min(100%,1200px)) /2 ));
-  }
-  
-.vittima { background-color: #901;}
-.orrore { background-color: #425;}
-.agente { background-color: #531;}
-
-.pngs { 
-  background-color: #A73; 
-  color: black;
-}
-
-
-HEADER { color: #F01; font-size: 1.4em; text-align: right; }
-
-FOOTER {
-  background-color: #501;
-}
-
-.pngs .png {
-  margin-bottom: 0.5em;
-  border-top: 1px dotted black;  
-}
-
-.personaggi .png {
-  margin-bottom: 0.5em;
-  border-top: 1px dotted white;  
-}
-
-}
-
-@media screen and (min-width: 900px) {
-.lista {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(384px, 1fr));
-    column-gap: 2em;
-}
-
-}
-
-
-
-@media print {
-    /* All your print styles go here */
-    #header,
-    #nav {
-      display: none !important;
-    }
-    BODY, DIV, UL LI, P {
+    
+    BODY {
         font-family: "Segoe UI", Roboto, Helvetica, Arial, "Segoe UI Emoji", "Segoe UI Symbol", "Noto sans", "Cantarell",system-ui,sans-serif, "Apple Color Emoji" ;
-        font-size: 10pt;
+        font-size: 14pt;
         background-color: black;
         color: white;
-      }    
+      }
+  
+    A { 
+      color: #FFFFA0; 
+      text-decoration: none;
+      font-weight: bold;
+    }  
+    
+    a:visited { color: #FFFF80 }
+    a:disabled { color: #FFFF00 }
+    
+  HEADER, FOOTER,  .agente, .orrore, .personaggi,.vittima, .pngs {
+     padding: 2em max(1em, calc( ( 100% - min(100%,1200px)) /2 ));
+    }
+    
+  .vittima { background-color: #901;}
+  .orrore { background-color: #425;}
+  .agente { background-color: #531;}
+  
+  .pngs { 
+    background-color: #A73; 
+    color: black;
   }
+  
+  
+  HEADER { color: #F01; font-size: 1.4em; text-align: right; }
+  
+  FOOTER {
+    background-color: #501;
+  }
+  
+  .pngs .png {
+    margin-bottom: 0.5em;
+    border-top: 1px dotted black;  
+  }
+  
+  .personaggi .png {
+    margin-bottom: 0.5em;
+    border-top: 1px dotted white;  
+  }
+  
+  }
+  
+  @media screen and (min-width: 900px) {
+  .lista {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(384px, 1fr));
+      column-gap: 2em;
+  }
+  
+  }
+  
+  
+  
+  @media print {
+      /* All your print styles go here */
+      #header,
+      #nav {
+        display: none !important;
+      }
+      BODY, DIV, UL LI, P {
+          font-family: "Segoe UI", Roboto, Helvetica, Arial, "Segoe UI Emoji", "Segoe UI Symbol", "Noto sans", "Cantarell",system-ui,sans-serif, "Apple Color Emoji" ;
+          font-size: 10pt;
+          background-color: black;
+          color: white;
+        }    
+    }
+    
   

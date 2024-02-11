@@ -132,6 +132,8 @@ type Scenario struct {
 	Orrore     *Orrore          `json:"orrore"`
 	Pngs       []*PngSecondario `json:"pngs"`
 	Personaggi []*Personaggio   `json:"personaggi"`
+	Seed       int64            `json:"seed"`
+	Url        string
 }
 
 func CreateScenario(t *CrackbrainTables) *Scenario {
