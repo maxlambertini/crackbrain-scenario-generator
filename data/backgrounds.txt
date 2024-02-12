@@ -1,0 +1,36 @@
+guardia notturna
+infermiere generico
+biologo
+fisico teorico
+psichiatra
+bambino
+cacciatore di libri
+militare
+detective privato
+delinquente
+disoccupato
+professore
+sbirro
+sindacalista
+finta occupazione, agente del controspionaggio
+studente
+archeologo
+sacerdote/persona di chiesa
+giornalista
+avvocato
+paparazzo
+vip da due soldi
+conservatore
+corriere
+atleta
+cacciatore di criptidi
+allevatore
+sensitivo
+scrittore
+pittore
+musicista
+tassista
+sex worker
+vagabondo
+ingegnere (informatico se coerente con il periodo)
+impiegato

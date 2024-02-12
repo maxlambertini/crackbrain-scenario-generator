@@ -8,7 +8,6 @@ import (
 	"log"
 	"mime"
 	"net/http"
-	"os"
 	"path/filepath"
 	"strconv"
 	"time"
@@ -41,15 +40,6 @@ func main() {
 	log.Print("Listening on :3069...")
 	log.Fatal(http.ListenAndServe("0.0.0.0:3069", router))
 
-}
-
-func GetExecutablePath() string {
-	ex, err := os.Executable()
-	if err != nil {
-		panic(err)
-	}
-	exPath := filepath.Dir(ex)
-	return exPath
 }
 
 func serveTemplate(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
