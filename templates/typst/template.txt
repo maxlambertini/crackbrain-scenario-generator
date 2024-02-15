@@ -5,7 +5,7 @@
   numbering: "1"
 )
 
-#set text(lang: "it", size: 12pt)
+#set text(lang: "it", size: 11pt)
 #set text(font: "Chivo")
 
 #set par(
@@ -22,7 +22,7 @@ uno scenario per Crackbrain
 
 L'orrore è: *{{ .Orrore.Tipo }}*. I suoi tratti sono: *{{ .Orrore.Tratti}}* e il suo luogo preferito è *{{ .Orrore.Luogo }}*. 
 
-L'orrore si manifesta attraverso la seguente creatura mortale: *{{ .Orrore.Manifestazione.Nome }}*, 
+L'orrore si manifesta attraverso la seguente creatura mortale: *{{ .Orrore.Manifestazione.GetNameSex }}*, 
 che ha come background *{{ .Orrore.Manifestazione.Background }}*. Come oggetto feticcio ha *{{ .Orrore.Manifestazione.Oggetto }}*, 
 e quando è in forma "normale" ha un'indole *{{ .Orrore.Manifestazione.Indole }}*, 
 
@@ -44,7 +44,7 @@ gutter: 5mm,
 [
 === La vittima
 
-La vittima dell'orrore si chiama *{{ .Orrore.Vittima.Png.Nome }}*, 
+La vittima dell'orrore si chiama *{{ .Orrore.Vittima.Png.GetNameSex }}*, 
 che ha come background *{{ .Orrore.Vittima.Png.Background }}*. Come oggetto feticcio aveva *{{ .Orrore.Vittima.Png.Oggetto }}*, 
 e chi la conosceva asserisce che la sua indole era  *{{ .Orrore.Vittima.Png.Indole }}*. 
 E' stata ritrovata in *{{ .Orrore.Vittima.LuogoRitrovamento }}*. 
@@ -62,7 +62,7 @@ block(
 [
 === l'agente dell'Orrore
 
-L'agente principale al servizio dell'orrore si chiama *{{ .Orrore.Agente.Png.Nome }}*, 
+L'agente principale al servizio dell'orrore si chiama *{{ .Orrore.Agente.Png.GetNameSex }}*, 
 che ha come background *{{ .Orrore.Agente.Png.Background }}*. Come oggetto feticcio ha *{{ .Orrore.Agente.Png.Oggetto }}*, 
 La sua indole è  *{{ .Orrore.Agente.Png.Indole }}*. 
 
@@ -78,6 +78,10 @@ block(
 ])
 
 #pagebreak()
+
+
+
+
 
 == Altri Png
 
@@ -114,7 +118,7 @@ Lista dei personaggi dello scenario
 columns: (1fr, 1fr),
 gutter: 5mm,
 {{ range .Pngs }}
-pngBlock(Nome:       [ {{.Png.Nome}} ], 
+pngBlock(Nome:       [ {{.Png.GetNameSex}} ], 
         Background: [ {{.Png.Background}} ] , 
         Oggetto   : [ {{.Png.Oggetto}} ], 
         Indole    : [ {{.Png.Indole }} ], 
@@ -131,6 +135,20 @@ pngBlock(Nome:       [ {{.Png.Nome}} ],
     height: 6cm,
     stroke: (0.5pt +black)
 )
+
+#pagebreak()
+
+== Luoghi Extra
+
+{{ range .Luoghi }}
+#block(
+    width: 100%    ,
+    height: 2cm,
+    inset: 0.2cm,
+    stroke: (0.5pt +black),
+    [ {{ . }}]
+)
+{{ end }}
 
 #pagebreak()
 
@@ -178,7 +196,7 @@ pngBlock(Nome:       [ {{.Png.Nome}} ],
 columns: (1fr, 1fr),
 gutter: 5mm,
 {{ range .Personaggi }}
-personaggio(Nome:       [ {{.Nome}} ], 
+personaggio(Nome:       [ {{.GetNameSex}} ], 
         Background:  [ {{.Background}} ] , 
         Oggetto:    [ {{.Oggetto}} ], 
         Stile:       [ {{.Stile.Nome }} ], 

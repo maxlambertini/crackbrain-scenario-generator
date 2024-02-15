@@ -1,36 +1,48 @@
-guardia notturna
-infermiere generico
-biologo
-fisico teorico
-psichiatra
-bambino
-cacciatore di libri
-militare
-detective privato
-delinquente
-disoccupato
-professore
-sbirro
-sindacalista
-finta occupazione, agente del controspionaggio
-studente
+allevatore
 archeologo
-sacerdote/persona di chiesa
-giornalista
+atleta
 avvocato
-paparazzo
-vip da due soldi
+bambino
+biologo
+body builder
+businessman
+buttafuori
+cacciatore di criptidi
+cacciatore di libri
+chimico sperimentale
 conservatore
 corriere
-atleta
-cacciatore di criptidi
-allevatore
-sensitivo
-scrittore
-pittore
-musicista
-tassista
-sex worker
-vagabondo
-ingegnere (informatico se coerente con il periodo)
+cospirazionista
+delinquente
+detective privato
+disoccupato
+finta occupazione, agente del controspionaggio
+fisico teorico
+giornalista
+guardia notturna
+hacker dilettante
 impiegato
+infermiere generico
+informatico aziendale
+ingegnere
+madonnaro
+militare
+musicista
+occultista
+paparazzo
+pittore
+professore
+psichiatra
+quadro aziendale
+sacerdote (o suora, rabbi, imam...)
+sbirro
+scrittore
+sensitivo
+sex worker
+sindacalista
+spacciatore
+squatter
+studente
+tassista
+vagabondo
+vip da due soldi

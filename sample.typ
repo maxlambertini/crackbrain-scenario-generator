@@ -5,7 +5,7 @@
   numbering: "1"
 )
 
-#set text(lang: "it", size: 12pt)
+#set text(lang: "it", size: 11pt)
 #set text(font: "Chivo")
 
 #set par(

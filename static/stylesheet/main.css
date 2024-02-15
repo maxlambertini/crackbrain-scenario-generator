@@ -119,7 +119,7 @@
         display: none !important;
       }
       BODY, DIV, UL LI, P {
-          font-family: "Segoe UI", Roboto, Helvetica, Arial, "Segoe UI Emoji", "Segoe UI Symbol", "Noto sans", "Cantarell",system-ui,sans-serif, "Apple Color Emoji" ;
+          font-family: "Clarity Gothic", "Archivo", "Segoe UI", Roboto, Helvetica, Arial, "Segoe UI Emoji", "Segoe UI Symbol", "Noto sans", "Cantarell",system-ui,sans-serif, "Apple Color Emoji" ;
           font-size: 10pt;
           color: black;
           background-color: white;

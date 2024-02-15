@@ -22,9 +22,9 @@
             </p>
             <p>
 
-            <h2>{{ .Orrore.Manifestazione.Nome }}, Manifestazione dell'orrore</h2>                
+            <h2>{{ .Orrore.Manifestazione.GetNameSex }}, Manifestazione dell'orrore</h2>                
 
-            L'orrore si manifesta attraverso la seguente creatura mortale: <b>{{ .Orrore.Manifestazione.Nome }}</b>, 
+            L'orrore si manifesta attraverso la seguente creatura mortale: <b>{{ .Orrore.Manifestazione.GetNameSex }}</b>, 
             che ha come background <b>{{ .Orrore.Manifestazione.Background }}</b>. 
             Come oggetto feticcio ha <b>{{ .Orrore.Manifestazione.Oggetto }}</b>, 
             e quando è in forma "normale" ha un'indole <b>{{ .Orrore.Manifestazione.Indole }}</b>, 
@@ -36,7 +36,7 @@
                         
         </div>
         <div class="vittima">
-            <h2>{{ .Orrore.Vittima.Png.Nome }}, La vittima</h2>
+            <h2>{{ .Orrore.Vittima.Png.GetNameSex }}, La vittima</h2>
             <p>
             Il suo background era <b>{{ .Orrore.Vittima.Png.Background }}</b>. 
             Come oggetto feticcio aveva <b>{{ .Orrore.Vittima.Png.Oggetto }}</b>, 
@@ -48,7 +48,7 @@
             <p>Con l'orrore aveva una relazione di <b>{{ .Orrore.Vittima.Relazione  }}</b> <p>
         </div>
         <div class="agente">
-            <h2>{{ .Orrore.Agente.Png.Nome }}, Agente al servizio dell'orrore</h2>
+            <h2>{{ .Orrore.Agente.Png.GetNameSex }}, Agente al servizio dell'orrore</h2>
             <p>
             Il suo background è <b>{{ .Orrore.Agente.Png.Background }}</b>. 
             L'oggetto che lo contraddistingue è  <b>{{ .Orrore.Agente.Png.Oggetto }}</b>, 
@@ -62,7 +62,7 @@
             <div class="lista">
             {{ range .Pngs }}
                 <div class="png">
-                    <h3>{{ .Png.Nome }} -- {{ .Ruolo }}</h3>
+                    <h3>{{ .Png.GetNameSex }} -- {{ .Ruolo }}</h3>
                     <p>
                         <b>{{.Png.Background}}</b>, possiede <b>{{.Png.Oggetto}}</b>. 
                         È di indole: <b>{{.Png.Indole }}</b>. La relazione che ha col personaggio di 
@@ -85,7 +85,7 @@
             <div class="lista">
             {{ range .Personaggi }}
                 <div class="png">
-                    <h3>{{ .Nome }}</h3>
+                    <h3>{{ .GetNameSex }}</h3>
                     <p>
                         <b>{{.Background}}</b>, possiede <b>{{.Oggetto}}</b>.
                         Il suo stile è <b>{{.Stile.Nome }}</b>, ovvero:  {{.Stile.Descrizione}}

@@ -1,0 +1,173 @@
+{{ define "layout"}}
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Crackbrain Scenario Generator</title>
+    <style>
+        BODY, UL LI, P, DIV, OL LI {
+            font-family: 'Clarity Gothic SF', 'Archivo','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 11pt;
+        }
+
+        @media print {
+
+        @page {
+            size: 21cm 29.7cm;
+            margin: 1.2cm;
+        }
+
+        TD > div, .orrore, .vittima, .agente, .luoghi, .personaggi, .pngs  {
+            page-break-inside: avoid;
+            break-inside: avoid-page;
+        }
+        
+        BODY, DIV, UL LI, P, TD, OL LI {
+          font-family: "Clarity Gothic", "Archivo", "Segoe UI", Roboto, Helvetica, Arial, "Segoe UI Emoji", "Segoe UI Symbol", "Noto sans", "Cantarell",system-ui,sans-serif, "Apple Color Emoji" ;
+          font-size: 10pt;
+          color: black;
+          background-color: white;
+        }    
+
+        TR {
+            vertical-align: top;
+        }
+
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ .Titolo }}</h1>
+    <h3>Uno scenario per Crackbrain</h3>
+    <div class="orrore">
+        <h2>L'orrore</h2>
+        <p>
+            L'orrore è: <b>{{ .Orrore.Tipo }}</b>. 
+            I suoi tratti sono: <b>{{ .Orrore.Tratti}}</b> e il suo luogo preferito è <b>{{ .Orrore.Luogo }}</b>.
+            <div style="margin-top:12pt; width: 100%; border: 1px solid gray; height: 2cm">
+                
+            </div>
+        </p>
+        <p>
+
+        <h2>{{ .Orrore.Manifestazione.GetNameSex  }}, Manifestazione dell'orrore</h2>                
+
+        L'orrore si manifesta attraverso la seguente creatura mortale: <b>{{ .Orrore.Manifestazione.GetNameSex }}</b>, 
+        che ha come background <b>{{ .Orrore.Manifestazione.Background }}</b>. 
+        Come oggetto feticcio ha <b>{{ .Orrore.Manifestazione.Oggetto }}</b>, 
+        e quando è in forma "normale" ha un'indole <b>{{ .Orrore.Manifestazione.Indole }}</b>, 
+        </p>
+        
+        <h2>Note ulteriori sull'orrore:</h2>
+        
+        <p>Come si manifesta? Quali sono le relazioni con la vittima e i suoi avatar sulla terra? <p>
+
+        <div style="margin-top:12pt; width: 100%; border: 1px solid gray; height: 2cm">
+            
+        </div>
+            
+    </div>
+    <div class="vittima">
+        <h2>{{ .Orrore.Vittima.Png.GetNameSex }}, La vittima</h2>
+        <p>
+        Il suo background era <b>{{ .Orrore.Vittima.Png.Background }}</b>. 
+        Come oggetto feticcio aveva <b>{{ .Orrore.Vittima.Png.Oggetto }}</b>, 
+        e chi la conosceva diceva che la sua indole era <b>{{ .Orrore.Vittima.Png.Indole }}</b>, 
+        </p>
+        
+        <p>É stata trovata in <b>{{ .Orrore.Vittima.LuogoRitrovamento }}</b><p>
+
+        <p>Con l'orrore aveva una relazione di <b>{{ .Orrore.Vittima.Relazione  }}</b> <p>
+
+        <div style="margin-top:12pt; width: 100%; border: 1px solid gray; height: 2cm">
+            
+        </div>
+
+    </div>
+    <div class="agente">
+        <h2>{{ .Orrore.Agente.Png.GetNameSex }}, Agente al servizio dell'orrore</h2>
+        <p>
+        Il suo background è <b>{{ .Orrore.Agente.Png.Background }}</b>. 
+        L'oggetto che lo contraddistingue è  <b>{{ .Orrore.Agente.Png.Oggetto }}</b>, 
+        E la sua indole è <b>{{ .Orrore.Agente.Png.Indole }}</b>, 
+        </p>
+        
+        <p>Con l'orrore ha una relazione di <b>{{ .Orrore.Agente.Relazione  }}</b><p>
+        <div style="margin-top:12pt; width: 100%; border: 1px solid gray; height: 2.5cm">
+            
+        </div>
+
+    </div>
+    <div class="pngs">
+        <h2>Personaggi Non Giocanti</h2>
+        <table class="lista" width="100%" cellspacing="5" cellpadding="4" border="0" valign="top">            
+        {{ range $i, $p := .Pngs }}
+            {{ if eq $i 0}}
+            <tr>
+            {{ end }}
+            {{ if modgt $i 2  }}
+            </tr><tr>
+            {{ end }}
+            <td class="png" width="50%%">
+                <div>
+                <h3>{{ $p.Png.GetNameSex }} -- {{ $p.Ruolo }}</h3>
+                <p>
+                    <b>{{$p.Png.Background}}</b>, possiede <b>{{$p.Png.Oggetto}}</b>. 
+                    È di indole: <b>{{$p.Png.Indole }}</b>. La relazione che ha col personaggio di 
+                    riferimento è di: <b>{{$p.Relazione}}</b>                    
+                </p>
+                <div style="margin-top:12pt; width: 100%; border: 1px solid gray; height: 2.5cm">
+                
+                </div>
+                </div>
+            </td>
+        {{ end }}
+        </tr>
+        </table>
+    </div>
+    <div class="luoghi">
+        <h2>Luoghi extra</h2>
+        {{ range .Luoghi}}
+        <div style="margin-top:12pt; width: 100%; border: 1px solid gray; height: 1.4cm">{{ . }}</div>
+        {{ end}}
+    </div>
+    <div class="personaggi">
+        <h2>Personaggi pregenerati</h2>
+
+        <table class="lista" width="100%" cellspacing="5" cellpadding="4" border="0" valign="top">            
+            {{ range $i, $p := .Personaggi }}
+                {{ if eq $i 0}}
+                <tr>
+                {{ end }}
+                {{ if modgt $i 2  }}
+                </tr><tr>
+                {{ end }}
+                <td class="png" width="50%%">
+                    <div>
+                    <h3>{{ .GetNameSex }}</h3>
+                    <p>
+                        <b>{{.Background}}</b>, possiede <b>{{.Oggetto}}</b>.
+                        Il suo stile è <b>{{.Stile.Nome }}</b>, ovvero:  {{.Stile.Descrizione}}
+                    </p>
+                    <div style="margin-top:12pt; width: 100%; border: 1px solid gray; height: 2.5cm">
+                
+                    </div>
+                </div>
+                </td>
+            {{ end }}
+            </tr>
+        </table>        
+    </div>
+    <div>
+        <p>
+            Questo è un generatore <i>pseudo</i>casuale di scenari per il gioco di ruolo horror/investigativo <a href="https://luca-negri.itch.io/crackbrain">Crackbrain</a>,  che segue l'algoritmo enunciato nel manuale. 
+        </p>
+        <p>Se vi piace lo scenario appena generato, questo è il suo permalink: <a href="{{ .Url }}">{{ .Url }}</a>
+        Se invece volete generare uno scenario ex-novo, <a href="/">cliccate qui. </a>
+        </p>
+        <p>Il programma è scritto in <b>go</b>; se ci tenete a modificarlo/usarlo come base/ecc. il codice lo trovate qui: <a href="https://github.com/maxlambertini/crackbrain-scenario-generator">https://github.com/maxlambertini/crackbrain-scenario-generator</a>. </p>
+    </div>
+</body>
+</html>
+{{end}}

@@ -31,6 +31,7 @@ func main() {
 
 	staticDir := http.Dir(ExecutablePath + "/static")
 	router.GET("/", serveTemplate)
+	router.GET("/print", servePrint)
 	router.GET("/api", serveJson)
 	router.GET("/typst", serveTypst)
 	router.ServeFiles("/static/*filepath", staticDir)
@@ -59,6 +60,28 @@ func serveTemplate(w http.ResponseWriter, r *http.Request, _ httprouter.Params) 
 	if err != nil {
 		panic("Error parsing templates" + err.Error())
 	}
+	tmpl.ExecuteTemplate(w, "layout", scenario)
+}
+
+func servePrint(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	seed := extractSeedFromQueryString(r)
+	lp := filepath.Join(ExecutablePath+"/templates", "layout_print.html")
+	table := NewCrackbrainTables(seed)
+	scenario := CreateScenario(table)
+	host := r.Host
+	scheme := "http"
+	if r.URL.Scheme != "" {
+		scheme = r.URL.Scheme
+	}
+	fmt.Println(r.RequestURI)
+	scenario.Url = fmt.Sprintf("%s://%s/print?seed=%d", scheme, host, seed)
+
+	tmpl := template.Must(template.New("").Funcs(template.FuncMap{"modgt": func(i, j int) bool { return i > 0 && i%j == 0 }}).ParseFiles(lp))
+	// tmpl, err := template.ParseFiles(lp)
+	// tmpl.Funcs(template.FuncMap{"mod": func(i, j int) bool { return i%j == 0 }})
+	// if err != nil {
+	// 	panic("Error parsing templates" + err.Error())
+	// }
 	tmpl.ExecuteTemplate(w, "layout", scenario)
 }
 

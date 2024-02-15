@@ -7,6 +7,7 @@ import (
 
 type Person interface {
 	GetName() string
+	GetNameSex() string
 }
 
 type Png struct {
@@ -14,15 +15,28 @@ type Png struct {
 	Background string `json:"background"`
 	Oggetto    string `json:"oggetto"`
 	Indole     string `json:"indole"`
+	Sesso      string `json:"sesso"`
 }
 
 func (p *Png) GetName() string {
 	return p.Nome
 }
 
+func (p *Png) GetNameSex() string {
+	return fmt.Sprintf("%s -- %s", p.Nome, p.Sesso)
+}
+
 func CreatePng(t *CrackbrainTables) *Png {
+	nome, sesso := t.NomeCasuale()
+	c := t.rnd.Int63() % 1000
+	if c < 5 {
+		sesso = fmt.Sprintf("(T)%s", sesso)
+	} else if c < 70 {
+		sesso = fmt.Sprintf("%s(H)", sesso)
+	}
 	var p = Png{
-		Nome:       t.NomeCasuale(),
+		Nome:       nome,
+		Sesso:      sesso,
 		Background: t.GetBakgroundPng(),
 		Oggetto:    t.GetOggettoPersonale(),
 		Indole:     strings.Join(t.GetIndolePng(2), " - "),
@@ -34,12 +48,21 @@ type Personaggio struct {
 	Nome       string              `json:"nome"`
 	Background string              `json:"background"`
 	Oggetto    string              `json:"oggetto"`
+	Sesso      string              `json:"sesso"`
 	Stile      *StileInvestigativo `json:"stile"`
 }
 
 func CreatePersonaggio(t *CrackbrainTables) *Personaggio {
+	nome, sesso := t.NomeCasuale()
+	c := t.rnd.Int63() % 1000
+	if c < 5 {
+		sesso = fmt.Sprintf("(T)%s", sesso)
+	} else if c < 70 {
+		sesso = fmt.Sprintf("%s(H)", sesso)
+	}
 	var p = Personaggio{
-		Nome:       t.NomeCasuale(),
+		Nome:       nome,
+		Sesso:      sesso,
 		Background: t.GetBakgroundPng(),
 		Oggetto:    t.GetOggettoPersonale(),
 		Stile:      t.GetStileInvestigativo(),
@@ -51,6 +74,10 @@ func (p *Personaggio) GetName() string {
 	return p.Nome
 }
 
+func (p *Personaggio) GetNameSex() string {
+	return fmt.Sprintf("%s -- %s", p.Nome, p.Sesso)
+}
+
 type Vittima struct {
 	Png               *Png   `json:"png"`
 	LuogoRitrovamento string `json:"luogoRitrovamento"`
@@ -59,6 +86,10 @@ type Vittima struct {
 
 func (p *Vittima) GetName() string {
 	return p.Png.GetName()
+}
+
+func (p *Vittima) GetNameSex() string {
+	return p.Png.GetNameSex()
 }
 
 func CreateRandomVittima(t *CrackbrainTables) *Vittima {
@@ -79,6 +110,10 @@ func (p *PngPrincipale) GetName() string {
 	return p.Png.GetName()
 }
 
+func (p *PngPrincipale) GetNameSex() string {
+	return p.Png.GetNameSex()
+}
+
 func CreatePngPrincipale(t *CrackbrainTables) *PngPrincipale {
 	return &PngPrincipale{
 		Png:       CreatePng(t),
@@ -95,6 +130,10 @@ type PngSecondario struct {
 
 func (p *PngSecondario) GetName() string {
 	return p.Png.GetName()
+}
+
+func (p *PngSecondario) GetNameSex() string {
+	return p.Png.GetNameSex()
 }
 
 func CreatePngSecondario(t *CrackbrainTables, ruolo string) *PngSecondario {

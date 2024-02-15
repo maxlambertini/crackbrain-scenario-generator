@@ -20,7 +20,11 @@ func TextFileToArray(filename string) []string {
 	if err != nil {
 		panic(fmt.Sprintf("Error reading %s", filename))
 	}
-	return strings.Split(string(content), "\n")
+	lines := strings.Split(string(content), "\n")
+	for i, s := range lines {
+		lines[i] = strings.TrimSpace(s)
+	}
+	return lines
 }
 
 func NewCrackbrainTables(i int64) *CrackbrainTables {
@@ -58,15 +62,15 @@ func (t *CrackbrainTables) Cognome() string {
 	return t.GetRandomItem(Cognomi)
 }
 
-func (t *CrackbrainTables) NomeCompleto(femmina bool) string {
+func (t *CrackbrainTables) NomeCompleto(femmina bool) (string, string) {
 	if femmina {
-		return t.NomeFemminile() + " " + t.Cognome()
+		return t.NomeFemminile() + " " + t.Cognome(), "F"
 	} else {
-		return t.NomeMaschile() + " " + t.Cognome()
+		return t.NomeMaschile() + " " + t.Cognome(), "M"
 	}
 }
 
-func (t *CrackbrainTables) NomeCasuale() string {
+func (t *CrackbrainTables) NomeCasuale() (string, string) {
 	idx := t.rnd.Int63() % 100
 	return t.NomeCompleto(idx < 53)
 }
