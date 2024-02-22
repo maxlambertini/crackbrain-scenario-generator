@@ -16,6 +16,7 @@ type Png struct {
 	Oggetto    string `json:"oggetto"`
 	Indole     string `json:"indole"`
 	Sesso      string `json:"sesso"`
+	Aspetto    string `json:"aspetto"`
 }
 
 func (p *Png) GetName() string {
@@ -39,6 +40,7 @@ func CreatePng(t *CrackbrainTables) *Png {
 		Sesso:      sesso,
 		Background: t.GetBakgroundPng(),
 		Oggetto:    t.GetOggettoPersonale(),
+		Aspetto:    t.GetAspetto(),
 		Indole:     strings.Join(t.GetIndolePng(2), " - "),
 	}
 	return &p
@@ -50,6 +52,7 @@ type Personaggio struct {
 	Oggetto    string              `json:"oggetto"`
 	Sesso      string              `json:"sesso"`
 	Stile      *StileInvestigativo `json:"stile"`
+	Aspetto    string              `json:"aspetto"`
 }
 
 func CreatePersonaggio(t *CrackbrainTables) *Personaggio {
@@ -66,6 +69,7 @@ func CreatePersonaggio(t *CrackbrainTables) *Personaggio {
 		Background: t.GetBakgroundPng(),
 		Oggetto:    t.GetOggettoPersonale(),
 		Stile:      t.GetStileInvestigativo(),
+		Aspetto:    t.GetAspetto(),
 	}
 	return &p
 }

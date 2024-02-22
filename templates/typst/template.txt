@@ -24,6 +24,7 @@ L'orrore è: *{{ .Orrore.Tipo }}*. I suoi tratti sono: *{{ .Orrore.Tratti}}* e i
 
 L'orrore si manifesta attraverso la seguente creatura mortale: *{{ .Orrore.Manifestazione.GetNameSex }}*, 
 che ha come background *{{ .Orrore.Manifestazione.Background }}*. Come oggetto feticcio ha *{{ .Orrore.Manifestazione.Oggetto }}*, 
+In forma umana ha il seguente aspetto: *{{ .Orrore.Manifestazione.Aspetto }}*.
 e quando è in forma "normale" ha un'indole *{{ .Orrore.Manifestazione.Indole }}*, 
 
 === Note ulteriori sull'orrore:
@@ -46,7 +47,8 @@ gutter: 5mm,
 
 La vittima dell'orrore si chiama *{{ .Orrore.Vittima.Png.GetNameSex }}*, 
 che ha come background *{{ .Orrore.Vittima.Png.Background }}*. Come oggetto feticcio aveva *{{ .Orrore.Vittima.Png.Oggetto }}*, 
-e chi la conosceva asserisce che la sua indole era  *{{ .Orrore.Vittima.Png.Indole }}*. 
+Chi la conosceva diceva che aveva questo aspetto: *{{ .Orrore.Vittima.Png.Aspetto }}*
+e la sua indole era  *{{ .Orrore.Vittima.Png.Indole }}*. 
 E' stata ritrovata in *{{ .Orrore.Vittima.LuogoRitrovamento }}*. 
 
 Con l'orrore aveva una relazione di *{{ .Orrore.Vittima.Relazione }}*. 
@@ -63,6 +65,7 @@ block(
 === l'agente dell'Orrore
 
 L'agente principale al servizio dell'orrore si chiama *{{ .Orrore.Agente.Png.GetNameSex }}*, 
+Questo è il suo aspetto: *{{ .Orrore.Agente.Png.Aspetto }}*
 che ha come background *{{ .Orrore.Agente.Png.Background }}*. Come oggetto feticcio ha *{{ .Orrore.Agente.Png.Oggetto }}*, 
 La sua indole è  *{{ .Orrore.Agente.Png.Indole }}*. 
 
@@ -85,7 +88,7 @@ block(
 
 == Altri Png
 
-#let pngBlock(Nome:"", Background:"", Oggetto:"", Indole:"", Ruolo:"", Relazione:"") = {
+#let pngBlock(Nome:"", Background:"", Aspetto: "", Oggetto:"", Indole:"", Ruolo:"", Relazione:"") = {
 figure(
 block(
 width: 100%,
@@ -95,6 +98,7 @@ width: 100%,
 
 - Nome *#Nome*
 - Background *#Background*
+- Aspetto *#Aspetto*
 - Oggetto *#Oggetto*
 - Indole *#Indole*
 - Relazione *#Relazione*
@@ -120,6 +124,7 @@ gutter: 5mm,
 {{ range .Pngs }}
 pngBlock(Nome:       [ {{.Png.GetNameSex}} ], 
         Background: [ {{.Png.Background}} ] , 
+        Aspetto   : [ {{.Png.Aspetto}} ], 
         Oggetto   : [ {{.Png.Oggetto}} ], 
         Indole    : [ {{.Png.Indole }} ], 
         Ruolo     : [ {{.Ruolo}} ], 
@@ -156,7 +161,7 @@ pngBlock(Nome:       [ {{.Png.GetNameSex}} ],
 
 #v(12pt)
 
-#let personaggio(Nome:"", Background:"", Oggetto:"", Stile:"", Descrizione:"") = {
+#let personaggio(Nome:"", Background:"", Aspetto: "",Oggetto:"", Stile:"", Descrizione:"") = {
     figure(
         block(
         width: 100%    ,
@@ -166,8 +171,9 @@ pngBlock(Nome:       [ {{.Png.GetNameSex}} ],
         #set align(left)
 #text( size:14pt, weight: 700, [ #Nome (#Background) ])
 
+- Aspetto: *#Aspetto*
 - Stile: *#Stile* : #Descrizione
-- Oggetto: #Oggetto
+- Oggetto: *#Oggetto*
 
 #block(
     width: 100%,
@@ -199,6 +205,7 @@ gutter: 5mm,
 personaggio(Nome:       [ {{.GetNameSex}} ], 
         Background:  [ {{.Background}} ] , 
         Oggetto:    [ {{.Oggetto}} ], 
+        Aspetto:    [ {{.Aspetto}} ], 
         Stile:       [ {{.Stile.Nome }} ], 
         Descrizione: [ {{.Stile.Descrizione}} ], 
 ),

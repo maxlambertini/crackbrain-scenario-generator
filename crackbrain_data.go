@@ -43,6 +43,7 @@ func GetExecutablePath() string {
 var NomiFemminili = TextFileToArray(fmt.Sprintf("%s/data/names_f.txt", GetExecutablePath()))
 var NomiMaschili = TextFileToArray(fmt.Sprintf("%s/data/names_m.txt", GetExecutablePath()))
 var Cognomi = TextFileToArray(fmt.Sprintf("%s/data/surnames.txt", GetExecutablePath()))
+var Aspetto = TextFileToArray(fmt.Sprintf("%s/data/look.txt", GetExecutablePath()))
 
 func (t *CrackbrainTables) GetRandomItem(data []string) string {
 	l := len(data)
@@ -121,6 +122,10 @@ var OggettoPersonale = TextFileToArray(fmt.Sprintf("%s/data/objects.txt", GetExe
 
 func (t *CrackbrainTables) GetOggettoPersonale() string {
 	return t.GetRandomItem(OggettoPersonale)
+}
+
+func (t *CrackbrainTables) GetAspetto() string {
+	return t.GetRandomItem(Aspetto)
 }
 
 var Luoghi = TextFileToArray(fmt.Sprintf("%s/data/places.txt", GetExecutablePath()))

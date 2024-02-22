@@ -23,14 +23,16 @@
             <p>
 
             <h2>{{ .Orrore.Manifestazione.GetNameSex }}, Manifestazione dell'orrore</h2>                
+            <p>
+                L'orrore si manifesta attraverso la seguente creatura mortale: <b>{{ .Orrore.Manifestazione.GetNameSex }}</b>, 
+                che ha come background <b>{{ .Orrore.Manifestazione.Background }}</b>. 
+                In forma umana ha il seguente aspetto: <b>{{ .Orrore.Manifestazione.Aspetto }}</b>.
+                </p></p>
+                Come oggetto feticcio ha <b>{{ .Orrore.Manifestazione.Oggetto }}</b>, 
+                e quando è in forma "normale" ha un'indole <b>{{ .Orrore.Manifestazione.Indole }}</b>, 
+                </p>
 
-            L'orrore si manifesta attraverso la seguente creatura mortale: <b>{{ .Orrore.Manifestazione.GetNameSex }}</b>, 
-            che ha come background <b>{{ .Orrore.Manifestazione.Background }}</b>. 
-            Come oggetto feticcio ha <b>{{ .Orrore.Manifestazione.Oggetto }}</b>, 
-            e quando è in forma "normale" ha un'indole <b>{{ .Orrore.Manifestazione.Indole }}</b>, 
-            </p>
-            
-            <h2>Note ulteriori sull'orrore:</h2>
+            <h3>Note ulteriori sull'orrore:</h3>
             
             <p>Come si manifesta? Quali sono le relazioni con la vittima e i suoi avatar sulla terra? <p>
                         
@@ -38,10 +40,12 @@
         <div class="vittima">
             <h2>{{ .Orrore.Vittima.Png.GetNameSex }}, La vittima</h2>
             <p>
-            Il suo background era <b>{{ .Orrore.Vittima.Png.Background }}</b>. 
-            Come oggetto feticcio aveva <b>{{ .Orrore.Vittima.Png.Oggetto }}</b>, 
-            e chi la conosceva diceva che la sua indole era <b>{{ .Orrore.Vittima.Png.Indole }}</b>, 
-            </p>
+                Il suo background era <b>{{ .Orrore.Vittima.Png.Background }}</b>. 
+                Chi la conosceva diceva che aveva questo aspetto: <b>{{ .Orrore.Vittima.Png.Aspetto }}</b>
+                </p><p>
+                Come oggetto feticcio aveva <b>{{ .Orrore.Vittima.Png.Oggetto }}</b>, 
+                e chi la conosceva diceva che la sua indole era <b>{{ .Orrore.Vittima.Png.Indole }}</b>, 
+                </p>
             
             <p>É stata trovata in <b>{{ .Orrore.Vittima.LuogoRitrovamento }}</b><p>
 
@@ -50,9 +54,11 @@
         <div class="agente">
             <h2>{{ .Orrore.Agente.Png.GetNameSex }}, Agente al servizio dell'orrore</h2>
             <p>
-            Il suo background è <b>{{ .Orrore.Agente.Png.Background }}</b>. 
-            L'oggetto che lo contraddistingue è  <b>{{ .Orrore.Agente.Png.Oggetto }}</b>, 
-            E la sua indole è <b>{{ .Orrore.Agente.Png.Indole }}</b>, 
+                Il suo background è <b>{{ .Orrore.Agente.Png.Background }}</b>. 
+                Questo è il suo aspetto: <b>{{ .Orrore.Agente.Png.Aspetto }}</b>
+                </p><p>
+                L'oggetto che lo contraddistingue è  <b>{{ .Orrore.Agente.Png.Oggetto }}</b>, 
+                E la sua indole è <b>{{ .Orrore.Agente.Png.Indole }}</b>, 
             </p>
             
             <p>Con l'orrore ha una relazione di <b>{{ .Orrore.Agente.Relazione  }}</b><p>
@@ -65,6 +71,7 @@
                     <h3>{{ .Png.GetNameSex }} -- {{ .Ruolo }}</h3>
                     <p>
                         <b>{{.Png.Background}}</b>, possiede <b>{{.Png.Oggetto}}</b>. 
+                        Aspetto: <b>{{ .Png.Aspetto }}</b>
                         È di indole: <b>{{.Png.Indole }}</b>. La relazione che ha col personaggio di 
                         riferimento è di: <b>{{.Relazione}}</b>
                     </p>
@@ -88,6 +95,7 @@
                     <h3>{{ .GetNameSex }}</h3>
                     <p>
                         <b>{{.Background}}</b>, possiede <b>{{.Oggetto}}</b>.
+                        Aspetto: <b>{{ .Aspetto }}</b>
                         Il suo stile è <b>{{.Stile.Nome }}</b>, ovvero:  {{.Stile.Descrizione}}
                     </p>
                 </div>
