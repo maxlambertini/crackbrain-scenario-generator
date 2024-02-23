@@ -34,6 +34,7 @@ func main() {
 	router.GET("/print", servePrint)
 	router.GET("/api", serveJson)
 	router.GET("/typst", serveTypst)
+	router.GET("/robots.txt", serveRobots)
 	router.ServeFiles("/static/*filepath", staticDir)
 
 	//rand.NewSource(time.Now().UnixNano())
@@ -41,6 +42,40 @@ func main() {
 	log.Print("Listening on :3069...")
 	log.Fatal(http.ListenAndServe("0.0.0.0:3069", router))
 
+}
+
+func serveRobots(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	var s string = `User-agent: CCBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: Omgili
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+	
+`
+
+	w.Header().Add("Content-Type", "text/plain")
+	w.Write([]byte(s))
 }
 
 func serveTemplate(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
